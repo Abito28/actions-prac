@@ -1,12 +1,22 @@
 name: Hello Actions
-on: push
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
-      - name: Say Hello
+      - name: Say hello
         run: echo "Hello from GitHub Actions!"
       - name: Show where I am running
         run: |
           whoami
           uname -a
+      - name: Check out the repository
+        uses: actions/checkout@v4
+      - name: List files in the repository
+        run: ls -a
