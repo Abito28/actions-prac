@@ -19,4 +19,4 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
       - name: List files in the repository
-        run: ls -a
+        run: exit 1
