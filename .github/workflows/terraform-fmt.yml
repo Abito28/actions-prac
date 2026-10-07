@@ -13,3 +13,14 @@ jobs:
         uses: hashicorp/setup-terraform@v3
       - name: Check Terraform format
         run: terraform fmt -check -recursive
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3    
+      - name: Terraform init without backend
+        run: terraform init -backend=false
+      - name: Terraform validate
+        run: terraform validate
