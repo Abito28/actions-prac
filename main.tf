@@ -3,3 +3,6 @@ resource "null_resource" "example" {
     a = "1"
   }
 }
+resource "aws_s3_bucket" "broken" {
+  not_a_real_argument = 1
+}
