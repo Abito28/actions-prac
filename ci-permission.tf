@@ -20,6 +20,6 @@ data "aws_iam_policy_document" "plan_state_access" {
 
 resource "aws_iam_role_policy" "plan_state_access" {
   name   = "plan-state-access"
-  role   = aws_iam_role.github_actions.id
+  role   = aws_iam_role.plan.id
   policy = data.aws_iam_policy_document.plan_state_access.json
 }
