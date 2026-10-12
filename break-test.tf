@@ -1,3 +1,1 @@
-locals {
-  foo = "bar"
-}
+locals { foo = }
