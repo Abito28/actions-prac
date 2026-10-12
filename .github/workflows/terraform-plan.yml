@@ -28,3 +28,5 @@ jobs:
         run: terraform init -input=false
       - name: Terraform plan
         run: terraform plan -input=false
+      - name: Write test (expected to fail)
+        run: echo "test" | aws s3 cp - s3://tfstate-292967571286-actions-prac/ci-write-test.txt
