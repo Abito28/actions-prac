@@ -65,3 +65,19 @@ resource "aws_iam_role_policy" "plan_state_access" {
   role   = aws_iam_role.plan.id
   policy = data.aws_iam_policy_document.plan_state_access.json
 }
+
+data "aws_iam_policy_document" "apply_access" {
+  source_policy_documents = [data.aws_iam_policy_document.plan_state_access.json]
+
+  statement {
+    sid       = "WriteState"
+    actions   = ["s3:PutObject"]
+    resources = ["${aws_s3_bucket.tfstate.arn}/actions-prac/terraform.tfstate"]
+  }
+}
+
+resource "aws_iam_role_policy" "apply_access" {
+  name   = "apply-access"
+  role   = aws_iam_role.apply.id
+  policy = data.aws_iam_policy_document.apply_access.json
+}
