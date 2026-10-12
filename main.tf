@@ -1,5 +1,5 @@
 resource "null_resource" "example" {
   triggers = {
-    a = "2"
+    a = "3"
   }
 }
