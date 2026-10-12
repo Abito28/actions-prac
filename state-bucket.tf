@@ -1,6 +1,11 @@
 resource "aws_s3_bucket" "tfstate" {
   bucket = "tfstate-292967571286-actions-prac"
 
+  #checkov:skip=CKV_AWS_18:Learning repo; an access log bucket adds cost and another bucket to manage
+  #checkov:skip=CKV_AWS_144:Learning repo; a replica bucket in another region doubles storage and needs a role
+  #checkov:skip=CKV_AWS_145:Learning repo; a customer-managed KMS key has a monthly fee
+  #checkov:skip=CKV2_AWS_62:A state bucket has no consumer for event notifications
+
   lifecycle {
     prevent_destroy = true
   }
