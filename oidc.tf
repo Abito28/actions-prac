@@ -48,7 +48,7 @@ data "aws_iam_policy_document" "trust_apply" {
     condition {
       test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:Abito28@130058484/actions-prac@1406408358:ref:refs/heads/main"]
+      values   = ["repo:Abito28@130058484/actions-prac@1406408358:environment:production"]
     }
   }
 }
